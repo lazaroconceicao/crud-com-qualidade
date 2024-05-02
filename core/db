@@ -1,1 +1,22 @@
-lazinho da bahia!
+{
+  "todos": [
+    {
+      "id": "6d7d1fc6-1c31-49f1-b47f-7118365da340",
+      "date": "2024-05-02T21:19:00.423Z",
+      "content": "Primeira TODO!",
+      "done": false
+    },
+    {
+      "id": "acc26a92-70fc-4692-b2ab-74f314ff3870",
+      "date": "2024-05-02T21:19:00.425Z",
+      "content": "Segunda TODO!",
+      "done": false
+    },
+    {
+      "id": "3a293830-a8db-4a98-8152-53552ce376e5",
+      "date": "2024-05-02T21:19:00.425Z",
+      "content": "Atualizada",
+      "done": false
+    }
+  ]
+}
