@@ -1,4 +1,4 @@
-import {GlobalStyles} from "../src/theme/GlobalStyles";
+import {GlobalStyles} from "@ui/theme/GlobalStyles";
 
 // const bg = "https://raw.githubusercontent.com/devsoutinho/aulas-crudcomqualidade.io/2f69fc697f76c1ed6385480b649185a0d258da5b/public/bg.jpeg"
 const bg = "/bg.jpeg"
