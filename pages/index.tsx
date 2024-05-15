@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GlobalStyles } from "@ui/theme/GlobalStyles";
+import { todoController } from "@ui/controller/todo";
 
 // const bg = "https://raw.githubusercontent.com/devsoutinho/aulas-crudcomqualidade.io/2f69fc697f76c1ed6385480b649185a0d258da5b/public/bg.jpeg"
 const bg = "/bg.jpeg";
 
-export default function Page() {
+interface HomeTodo {
+    id: string;
+    content: string;
+}
+
+export default function homePage() {
+    const [todos, setTodos] = React.useState<HomeTodo[]>([]);
+
+    //load info onload
+    useEffect(() => {
+        todoController.get().then((todos) => {
+            setTodos(todos);
+        });
+    }, []);
+
     return (
         <main>
             <GlobalStyles themeName="indigo" />
@@ -45,23 +60,22 @@ export default function Page() {
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                            </td>
-                            <td>d4f26</td>
-                            <td>
-                                Conteúdo de uma TODO Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Eaque vero facilis
-                                obcaecati, autem aliquid eius! Consequatur eaque
-                                doloribus laudantium soluta optio odit,
-                                provident, ab voluptates doloremque voluptas
-                                recusandae aspernatur aperiam.
-                            </td>
-                            <td align="right">
-                                <button data-type="delete">Apagar</button>
-                            </td>
-                        </tr>
+                        {todos.map((todo) => {
+                            return (
+                                <tr key={todo.id}>
+                                    <td>
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td>{todo.id.substring(0, 4)}</td>
+                                    <td>{todo.content}</td>
+                                    <td align="right">
+                                        <button data-type="delete">
+                                            Apagar
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
 
                         <tr>
                             <td
