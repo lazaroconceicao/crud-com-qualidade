@@ -11,11 +11,12 @@ interface HomeTodo {
 }
 
 export default function homePage() {
+    const [page, setPage] = React.useState(1);
     const [todos, setTodos] = React.useState<HomeTodo[]>([]);
 
     //load info onload
     useEffect(() => {
-        todoController.get().then((todos) => {
+        todoController.get({ page }).then(({ todos }) => {
             setTodos(todos);
         });
     }, []);
@@ -99,8 +100,11 @@ export default function homePage() {
                                 align="center"
                                 style={{ textAlign: "center" }}
                             >
-                                <button data-type="load-more">
-                                    Carregar mais{" "}
+                                <button
+                                    data-type="load-more"
+                                    onClick={() => setPage(page + 1)}
+                                >
+                                    Página {page}, Carregar mais{" "}
                                     <span
                                         style={{
                                             display: "inline-block",
